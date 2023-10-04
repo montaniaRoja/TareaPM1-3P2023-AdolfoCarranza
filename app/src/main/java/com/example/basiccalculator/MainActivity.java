@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
     Button botonSuma, botonResta,botonMult,botonDiv;
     String opcion;
     int num1, num2;
-    boolean ejecutar=false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 actividadDos(resultadoString, "Suma");
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Por favor, complete ambos campos.", Toast.LENGTH_SHORT).show();
+                    emptyField();
                 }
             }
         });
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 actividadDos(resultadoString, "Resta");
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Por favor, complete ambos campos.", Toast.LENGTH_SHORT).show();
+                    emptyField();
                 }
             }
         });
@@ -80,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                         String resultadoString = String.valueOf(operacion.getResultado());
                         actividadDos(resultadoString, "Division");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Error: División por cero.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.divZeroErrorMsg, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Favor complete ambos campos.", Toast.LENGTH_SHORT).show();
+                    emptyField();
                 }
             }
         });
@@ -101,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 actividadDos(resultadoString, "Multiplicacion");
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Por favor, complete ambos campos.", Toast.LENGTH_SHORT).show();
+                    emptyField();
                 }
             }
         });
@@ -121,13 +119,14 @@ public class MainActivity extends AppCompatActivity {
 
     //verificar que los texts esten llenos
 
-    private boolean validarNumeros(){
-        String textoNumeroUno = numeroUno.getText().toString();
-        String textoNumeroDos = numeroDos.getText().toString();
-        if (TextUtils.isEmpty(textoNumeroUno) || TextUtils.isEmpty(textoNumeroDos)) {
-            return false;
-        }
-        return true;
+    private boolean validarNumeros() {
+        return !TextUtils.isEmpty(numeroUno.getText().toString()) && !TextUtils.isEmpty(numeroDos.getText().toString());
     }
+
+    private void emptyField(){
+        Toast.makeText(getApplicationContext(), R.string.emptyFieldMsg, Toast.LENGTH_SHORT).show();
+
+    }
+
 
 }

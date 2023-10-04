@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BasicCalculator</string>
+    <string name="emptyFieldMsg">por favor complete ambos campos</string>
+    <string name="divZeroErrorMsg">Error de division entre Zero</string>
+
 </resources>

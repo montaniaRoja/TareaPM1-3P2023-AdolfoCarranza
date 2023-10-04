@@ -33,6 +33,7 @@ public class Operacion {
     }
 
     public int getResultado() {
+
         return resultado;
     }
 }
